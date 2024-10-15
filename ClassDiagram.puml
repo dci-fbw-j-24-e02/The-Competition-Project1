@@ -1,0 +1,73 @@
+@startuml
+
+class WordBank {
+    - List<String> wordList
+    - String filePath
+    + WordBank(String filePath)
+    + void loadWords()
+    + String getRandomWord(int minLength, int maxLength)
+    + void addWord(String word)
+}
+
+class Player {
+    - String name
+    - int score
+    + Player(String name)
+    + void increaseScore()
+    + int getScore()
+    + String getName()
+}
+
+class Word {
+    - String word
+    - Set<Character> guessedLetters
+    - String maskedWord
+    + Word(String word)
+    + boolean revealLetter(String guess)
+    + boolean isGuessed()
+    + String getMaskedWord()
+    + String getWord()
+    + int getLength()
+}
+
+class HangmanUI {
+    - String[] hangmanStages
+    + void displayHangman(int incorrectGuesses)
+}
+
+class Timer {
+    - int timeLeft
+    - boolean running
+    + Timer(int timeLeft)
+    + void run()
+    + void stopTimer()
+}
+
+class MultiplayerGame {
+    - WordBank wordBank
+    - Player player1
+    - Player player2
+    - Word word
+    - int maxAttempts
+    - int currentAttempts
+    - HangmanUI hangmanUI
+    - Timer timer
+    + MultiplayerGame(String player1Name, String player2Name)
+    + void start()
+    + void playGame()
+    + void addCustomWords()
+    + void setDifficultyLevel(int choice)
+    + int getMinLength(int difficulty)
+    + int getMaxLength(int difficulty)
+    + static void main(String[] args)
+}
+
+MultiplayerGame --> WordBank : uses
+MultiplayerGame --> Player : has
+MultiplayerGame --> Word : has
+MultiplayerGame --> HangmanUI : uses
+MultiplayerGame --> Timer : uses
+WordBank --> Word : provides
+Word --> Player : interacts
+
+@enduml
