@@ -9,6 +9,10 @@ class WordBank {
     + void addWord(String word)
 }
 
+interface WordFilter{
+    + boolean filter(String word)
+}
+
 class Player {
     - String name
     - int score
@@ -71,6 +75,7 @@ MultiplayerGame --> Player : has
 MultiplayerGame --> Word : has
 MultiplayerGame --> HangmanUI : uses
 MultiplayerGame --> Timer : uses
+WordBank --> WordFilter : uses
 WordBank --> Word : provides
 Word --> Player : interacts
 
