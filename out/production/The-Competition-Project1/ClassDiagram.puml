@@ -9,13 +9,19 @@ class WordBank {
     + void addWord(String word)
 }
 
+interface WordFilter{
+    + boolean filter(String word)
+}
+
 class Player {
     - String name
     - int score
     + Player(String name)
+    + Player()
     + void increaseScore()
     + int getScore()
     + String getName()
+    + String toString()
 }
 
 class Word {
@@ -31,7 +37,11 @@ class Word {
 }
 
 class HangmanUI {
-    - String[] hangmanStages
+    - String[] hangman
+    - int stage
+    + HangmanUI
+    + String[] createHangman()
+    + void changeHangman(int stage)
     + void displayHangman(int incorrectGuesses)
 }
 
@@ -67,6 +77,7 @@ MultiplayerGame --> Player : has
 MultiplayerGame --> Word : has
 MultiplayerGame --> HangmanUI : uses
 MultiplayerGame --> Timer : uses
+WordBank --> WordFilter : uses
 WordBank --> Word : provides
 Word --> Player : interacts
 
