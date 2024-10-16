@@ -10,6 +10,11 @@ public class HangmanUI {
         stage = 0;
     }
 
+    public int getStage(){
+        return stage;
+    }
+
+
     private String[] createHangman(){
         String[] man = new String[11];
         man[0] = "*****************";

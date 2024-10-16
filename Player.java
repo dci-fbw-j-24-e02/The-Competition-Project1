@@ -30,9 +30,9 @@ public class Player {
         return score;
     }
 
-    public void increaseAttempt(){
+    public void increaseAttempt(int maxAttempts){
         currentAttempt++;
-        updateHangmanStatus();
+        updateHangmanStatus(maxAttempts);
     }
 
     public int getCurrentAttempt() { return currentAttempt;}
@@ -41,8 +41,33 @@ public class Player {
          return this.hangman.getHangman();
     }
 
-    private void updateHangmanStatus(){
-        this.hangman.updateHangman(this.currentAttempt);
+    private void updateHangmanStatus(int maxAttempts){
+       int currentStage = this.currentAttempt;
+        switch(maxAttempts) {
+            case 6 -> {
+                switch (this.currentAttempt) {
+                    case 1 -> currentStage = 1;
+                    case 2 -> currentStage = 3;
+                    case 3 -> currentStage = 5;
+                    case 4 -> currentStage = 6;
+                    case 5 -> currentStage = 7;
+                    case 6 -> currentStage = 8;
+                    default -> currentStage = this.currentAttempt;
+                }
+            }
+            case 4 -> {
+                switch (this.currentAttempt) {
+                    case 1 -> currentStage = 3;
+                    case 2 -> currentStage = 5;
+                    case 3 -> currentStage = 7;
+                    case 4 -> currentStage = 8;
+                    default -> currentStage = currentAttempt;
+                }
+            }
+        }
+        for(int i = hangman.getStage(); i <= currentStage; i++) {
+            this.hangman.updateHangman(i);
+        }
     }
 
     @Override
