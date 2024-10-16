@@ -10,6 +10,11 @@ public class WordBank {
 
     public WordBank(String filePath) {
         this.filePath = filePath;
+        try {
+            loadWords();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void loadWords() throws IOException {
@@ -54,35 +59,5 @@ public class WordBank {
 
         wordList.add(word.toLowerCase());
         System.out.println("Word added successfully!");
-    }
-
-    public static void main(String[] args) {
-        WordBank wordBank = new WordBank("words.txt");
-        try {
-            wordBank.loadWords();
-            wordBank.wordList.forEach(System.out::println);
-
-            System.out.println("Choose difficulty level:");
-            System.out.println("1. Easy (3-5 letters, max attempts: 8)");
-            System.out.println("2. Medium (6-8 letters, max attempts: 6)");
-            System.out.println("3. Hard (9+ letters, max attempts: 4)");
-            Scanner sc = new Scanner(System.in);
-            int diffLevel = sc.nextInt();
-
-            Word word = new Word(wordBank.getRandomWord((w) -> {
-                switch (diffLevel) {
-                    case 1: return w.length() >= 3 && w.length() <= 5; // Easy
-                    case 2: return w.length() >= 6 && w.length() <= 8; // Medium
-                    case 3: return w.length() >= 9;                    // Hard
-                    default: return w.length() >= 3 && w.length() <= 5; // Default to Easy
-                }
-            }));
-
-
-            System.out.println("Chosen word: "+ word.getWord());
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 }

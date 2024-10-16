@@ -74,16 +74,11 @@ class MultiplayerGame {
     - Player player2
     - Word word
     - int maxAttempts
-    - int currentAttempts
-    - HangmanUI hangmanUI
     - Timer timer
     + MultiplayerGame(String player1Name, String player2Name)
     + void start()
     + void playGame()
-    + void addCustomWords()
-    + void setDifficultyLevel(int choice)
-    + int getMinLength(int difficulty)
-    + int getMaxLength(int difficulty)
+    + void setMaxAttempts(int diffLevel)
     + static void main(String[] args)
 }
 
