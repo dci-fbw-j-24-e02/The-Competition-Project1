@@ -31,7 +31,11 @@ class Word {
 }
 
 class HangmanUI {
-    - String[] hangmanStages
+    - String[] hangman
+    - int stage
+    + HangmanUI
+    + String[] createHangman()
+    + void changeHangman(int stage)
     + void displayHangman(int incorrectGuesses)
 }
 
