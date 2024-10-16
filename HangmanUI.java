@@ -26,7 +26,7 @@ public class HangmanUI {
         return man;
     }
 
-    private void changeHangman(int stage){
+    public void updateHangman(int stage){
         switch(stage){
             case 1 ->
                 hangman[3] = "*  |        O   *";
@@ -60,7 +60,7 @@ public class HangmanUI {
          }
             while(stage != incorrectGuesses){
                 stage++;
-                changeHangman(stage);
+                updateHangman(stage);
             }
 
         for(String line: hangman){
@@ -68,5 +68,9 @@ public class HangmanUI {
         }
     }
     
+
+    public String[] getHangman(){
+        return hangman;
+    }
 
 }
