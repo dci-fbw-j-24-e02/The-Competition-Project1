@@ -67,5 +67,6 @@ public class HangmanUI {
             System.out.printf("%15s%s%n", "", line);
         }
     }
+    
 
 }
