@@ -17,9 +17,11 @@ class Player {
     - String name
     - int score
     + Player(String name)
+    + Player()
     + void increaseScore()
     + int getScore()
     + String getName()
+    + String toString()
 }
 
 class Word {
