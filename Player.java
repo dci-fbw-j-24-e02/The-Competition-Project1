@@ -24,7 +24,6 @@ public class Player {
 
     public void increaseScore(){
         score++;
-        updateHangmanStatus();
     }
 
     public int getScore(){
@@ -33,6 +32,7 @@ public class Player {
 
     public void increaseAttempt(){
         currentAttempt++;
+        updateHangmanStatus();
     }
 
     public int getCurrentAttempt() { return currentAttempt;}
@@ -42,7 +42,7 @@ public class Player {
     }
 
     private void updateHangmanStatus(){
-        this.hangman.updateHangman(this.score);
+        this.hangman.updateHangman(this.currentAttempt);
     }
 
     @Override
