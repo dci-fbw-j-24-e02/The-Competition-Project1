@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class HangmanUI {
 
     private String[] hangman;
@@ -66,6 +68,5 @@ public class HangmanUI {
             System.out.printf("%15s%s%n", "", line);
         }
     }
-
 
 }
