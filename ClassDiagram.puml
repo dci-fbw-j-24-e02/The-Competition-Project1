@@ -16,11 +16,17 @@ interface WordFilter{
 class Player {
     - String name
     - int score
+    - HangmanUI hangman
+    - int currentAttempt
     + Player(String name)
     + Player()
     + void increaseScore()
     + int getScore()
     + String getName()
+    + void increaseAttempt()
+    + int getCurrentAttempt()
+    + String[] getHangmanStatus()
+    + void updateHangmanStatus()
     + String toString()
 }
 
@@ -37,14 +43,10 @@ class Word {
 }
 class StatusBoard {
     - String currentWord
-    - String[] currentHangman1
-    - String[] currentHangman2
     - Player player1
     - Player player2
-    + StatusBoard(String currentWord, String[] currentHangman1,
-    String[] currentHangman2, Player player1, Player player2)
-    + void updateStatusBoard(String currentWord, String[] currentHangman1,
-    String[] currentHangman2 , Player player1, Player player2)
+    + StatusBoard(String currentWord, Player player1, Player player2)
+    + void updateStatusBoard(String currentWord)
     + void displayStatusBoard()
 }
 
@@ -94,7 +96,8 @@ WordBank --> WordFilter : uses
 WordBank --> Word : provides
 Word --> Player : interacts
 MultiplayerGame --> StatusBoard : uses
-StatusBoard --> Player : uses
-StatusBoard --> HangmanUI : interacts
+StatusBoard --> Player : has
+Player --> HangmanUI : has
+
 
 @enduml
