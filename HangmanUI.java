@@ -28,30 +28,29 @@ public class HangmanUI {
 
     private void changeHangman(int stage){
         switch(stage){
-            case 1:
+            case 1 ->
                 hangman[3] = "*  |        O   *";
-                break;
-            case 2:
+
+            case 2 ->
                 hangman[4] = "*  |        |   *";
-                break;
-            case 3:
+
+            case 3 ->
                 hangman[5] = "*  |        |   *";
-                break;
-            case 4:
+
+            case 4 ->
                 hangman[6] = "*  |       /    *";
-                break;
-            case 5:
+
+            case 5 ->
                 hangman[6] = "*  |       / \\  *";
-                break;
-            case 6:
+
+            case 6 ->
                 hangman[4] = "*  |       /|   *";
-                break;
-            case 7:
+
+            case 7 ->
                 hangman[4] = "*  |       /|\\  *";
-                break;
-            case 8:
+
+            case 8 ->
                 hangman[2] = "*  |        |   *";
-                break;
         }
     }
 
