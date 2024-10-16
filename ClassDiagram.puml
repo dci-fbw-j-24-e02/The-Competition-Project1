@@ -35,14 +35,27 @@ class Word {
     + String getWord()
     + int getLength()
 }
+class StatusBoard {
+    - String currentWord
+    - String[] currentHangman1
+    - String[] currentHangman2
+    - Player player1
+    - Player player2
+    + StatusBoard(String currentWord, String[] currentHangman1,
+    String[] currentHangman2, Player player1, Player player2)
+    + void updateStatusBoard(String currentWord, String[] currentHangman1,
+    String[] currentHangman2 , Player player1, Player player2)
+    + void displayStatusBoard()
+}
 
 class HangmanUI {
     - String[] hangman
     - int stage
     + HangmanUI
     + String[] createHangman()
-    + void changeHangman(int stage)
+    + void updateHangman(int stage)
     + void displayHangman(int incorrectGuesses)
+    + String[] getHangman
 }
 
 class Timer {
@@ -80,5 +93,8 @@ MultiplayerGame --> Timer : uses
 WordBank --> WordFilter : uses
 WordBank --> Word : provides
 Word --> Player : interacts
+MultiplayerGame --> StatusBoard : uses
+StatusBoard --> Player : uses
+StatusBoard --> HangmanUI : interacts
 
 @enduml
