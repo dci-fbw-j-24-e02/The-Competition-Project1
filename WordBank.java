@@ -39,8 +39,6 @@ public class WordBank {
             throw new IllegalArgumentException("No words available for the selected difficulty level.");
         }
 
-        filteredWords.forEach(System.out::println);
-
           Random random = new Random();
 
           return filteredWords.get(random.nextInt(filteredWords.size()));

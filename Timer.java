@@ -1,30 +1,44 @@
 public class Timer extends Thread {
-    private int timeLeft;
+    private int seconds;
     private boolean running;
+    private boolean timeOver;
+    private Player player;
 
-    public Timer(int timeLeft) {
-        this.timeLeft = timeLeft;
+    public Timer(int seconds, Player player) {
+        this.seconds = seconds;
+        this.player = player;
         this.running = false;
+        this.timeOver = false;
+    }
+
+    public boolean isTimeOver() {
+        return timeOver;
     }
 
     @Override
     public void run() {
         running = true;
-        while (timeLeft > 0 && running) {
-            try {
-                Thread.sleep(1000);
-                timeLeft--;
-                System.out.println("Time left: " + timeLeft + " seconds");
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
+        timeOver = false;
+        try {
+            for (int i = 0; i < seconds; i++) {
+                if (!running) break;
+                Thread.sleep(1000); // Wait for 1 second
             }
-        }
-        if (timeLeft == 0) {
-            System.out.println("Time's up!");
+            timeOver = running;
+         //   System.out.println(player.getName() + " ran out of time!");
+        } catch (InterruptedException e) {
+            running = false;
+            System.out.println("Timer interrupted");
         }
     }
 
     public void stopTimer() {
-        running = false;
+        running = false; // Stop the timer
+
+    }
+
+    public void checkTimer() {
+        running = false; // Stop the timer
+
     }
 }
