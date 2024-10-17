@@ -129,7 +129,6 @@ public class MultiplayerGame {
                 currentPlayer.increaseAttempt(maxAttempts);
                 if(currentPlayer.getCurrentAttempt() >= maxAttempts){
                     System.out.println("Sorry! " + currentPlayer.getName() + ", you lose :(\n");
-                    //only next player should be able to guess
                 }
             }
 
