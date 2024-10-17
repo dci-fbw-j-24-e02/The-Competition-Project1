@@ -5,6 +5,7 @@ public class Word {
     private String word;
     private Set<Character> guessedLetters;
     private String maskedWord;
+    private String guess;
 
     public Word(String word) {
         this.word = word;
@@ -14,6 +15,10 @@ public class Word {
 
     public boolean revealLetter(String guess) {
         if (guess.length() != 1) {
+            if(guess.equals(word)){
+                maskedWord = word;
+                return true;
+            }
             return false; // Only single letter guesses are allowed
         }
 

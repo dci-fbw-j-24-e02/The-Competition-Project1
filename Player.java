@@ -7,7 +7,7 @@ public class Player {
     private HangmanUI hangman;
     private int currentAttempt;
     private List<Character> incorrectGuesses;
-    private List<String> incorrectWords;
+
 
     public Player(){
         this.name = "New player";
@@ -15,7 +15,7 @@ public class Player {
         this.hangman = new HangmanUI();
         this.currentAttempt = 0;
         this.incorrectGuesses = new ArrayList<>();
-        this.incorrectWords = new ArrayList<>();
+
     }
 
     public Player(String name){
@@ -24,8 +24,7 @@ public class Player {
         this.hangman = new HangmanUI();
         this.currentAttempt = 0;
         this.incorrectGuesses = new ArrayList<>();
-        this.incorrectWords = new ArrayList<>();
-        incorrectWords.add("");
+
     }
 
     public String getName(){
@@ -51,17 +50,8 @@ public class Player {
         return incorrectGuesses;
     }
 
-    public List<String> getIncorrectWords() {
-        return incorrectWords;
-    }
-
     public void addIncorrectGuess(String guess){
-        if(guess.length() > 1){
-            if(incorrectWords.get(0).equals("")){
-                incorrectWords.remove(0);
-            }
-            incorrectWords.add(guess.toUpperCase());
-        }else{
+        if(guess.trim().length() == 1){
             incorrectGuesses.add(guess.toUpperCase().charAt(0));
         }
     }
