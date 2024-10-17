@@ -1,14 +1,21 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private String name;
     private int score;
     private HangmanUI hangman;
     private int currentAttempt;
+    private List<Character> incorrectGuesses;
+    private List<String> incorrectWords;
 
     public Player(){
         this.name = "New player";
         this.score = 0;
         this.hangman = new HangmanUI();
         this.currentAttempt = 0;
+        this.incorrectGuesses = new ArrayList<>();
+        this.incorrectWords = new ArrayList<>();
     }
 
     public Player(String name){
@@ -16,6 +23,9 @@ public class Player {
         this.score = score;
         this.hangman = new HangmanUI();
         this.currentAttempt = 0;
+        this.incorrectGuesses = new ArrayList<>();
+        this.incorrectWords = new ArrayList<>();
+        incorrectWords.add("");
     }
 
     public String getName(){
@@ -37,9 +47,29 @@ public class Player {
 
     public int getCurrentAttempt() { return currentAttempt;}
 
+    public List<Character> getIncorrectGuesses() {
+        return incorrectGuesses;
+    }
+
+    public List<String> getIncorrectWords() {
+        return incorrectWords;
+    }
+
+    public void addIncorrectGuess(String guess){
+        if(guess.length() > 1){
+            if(incorrectWords.get(0).equals("")){
+                incorrectWords.remove(0);
+            }
+            incorrectWords.add(guess.toUpperCase());
+        }else{
+            incorrectGuesses.add(guess.toUpperCase().charAt(0));
+        }
+    }
+
     public String[] getHangmanStatus(){
          return this.hangman.getHangman();
     }
+
 
     private void updateHangmanStatus(int maxAttempts){
        int currentStage = this.currentAttempt;

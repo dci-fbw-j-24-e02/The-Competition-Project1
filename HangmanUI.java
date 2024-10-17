@@ -5,6 +5,7 @@ public class HangmanUI {
     private String[] hangman;
     private int stage;
 
+
     public HangmanUI(){
         this.hangman = createHangman();
         stage = 0;
