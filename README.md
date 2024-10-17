@@ -4,7 +4,7 @@
 #### The Game for two players!
 
 **Objective**:
-In this two-player game, players take turns guessing letters to reveal a hidden word. The goal is to guess the word before reaching the allowed mistake limit.
+In this two-player game, players take turns guessing letters to reveal a hidden word. The goal is to guess the word before reaching the allowed attempts limit.
 
 **Game Rules**:
 
@@ -12,12 +12,12 @@ In this two-player game, players take turns guessing letters to reveal a hidden 
 Players alternate turns to guess one letter at a time.
 
 2. **Mistake limit**:
-The number of mistakes allowed depends on the difficulty level chosen. Once a player exceeds the limit, they lose the game.
+The number of allowed incorrect attempts depends on the chosen difficulty level. Once a player exceeds the limit, they lose the game.
 
 3. **Winning condition**:
-If a player successfully guesses the entire word within the allowed mistakes, they win.
+If a player successfully guesses the entire word within the allowed attempts limit, they win.
 
 4. **Time limit**:
-Each player has 30 seconds to make their guess. Failure to guess within the time limit counts as a mistake, and the turn automatically passes to the next player.
+Each player has 30 seconds to make their guess. Failure to guess within the time limit counts as a incorrect attempt, and the turn automatically passes to the next player.
 
 
