@@ -91,10 +91,10 @@ public class MultiplayerGame {
         while(!word.isGuessed() && (player1.getCurrentAttempt() < maxAttempts || player2.getCurrentAttempt() < maxAttempts)){
             statusBoard.displayStatusBoard();
             currentPlayer = isPlayer1Turn ? player1 : player2;
-            System.out.println(currentPlayer.getName() + "'s turn. You have 30 seconds. Enter your guess: ");
+            System.out.println("\n" + currentPlayer.getName() + "'s turn. You have 30 seconds. Enter your guess: ");
             Timer timer = startTimer(currentPlayer);
 
-            guess = sc.nextLine();
+            guess = sc.nextLine().toLowerCase();
             timer.stopTimer();
 
             guessMaidInTime = !timer.isTimeOver();
@@ -102,23 +102,22 @@ public class MultiplayerGame {
             if (guessMaidInTime){
                 if(!word.revealLetter(guess)){
                     currentPlayer.increaseAttempt(maxAttempts);
-                    System.out.println("Incorrect guess!");
+                    System.out.println("Incorrect guess!\n");
                     currentPlayer.addIncorrectGuess(guess);
+                    if(currentPlayer.getCurrentAttempt() >= maxAttempts){
+                        System.out.println("Sorry! " + currentPlayer.getName() + ", you lose :(\n");
+                    }
                 }
                 else{
                     if (word.isGuessed()) {
-                        System.out.println(currentPlayer.getCurrentAttempt() < maxAttempts ? "Congratulations! The word was: " + word.getWord() : "Game Over! The word was: " + word.getWord());
-                        statusBoard.updateStatusBoard(word.getMaskedWord());
-                    /*
-                        if (isPlayer1Turn) {
-                            player1.increaseScore();
-                        } else {
-                            player2.increaseScore();
+                        System.out.println(currentPlayer.getCurrentAttempt() < maxAttempts ? "Congratulations, " + currentPlayer.getName() + ", you won! The word was: " + word.getWord() : "Game Over! The word was: " + word.getWord().toUpperCase());
+                        for(int i = 0; i < 5; i++) {
+                            currentPlayer.increaseScore();
                         }
+                        statusBoard.updateStatusBoard(word.getMaskedWord());
 
-                     */
                     } else {
-                        System.out.println("Congratulations! You guessed the letter and have one more attempt!");
+                        System.out.println("Congratulations! You guessed the letter and have one more attempt!\n");
                         currentPlayer.increaseScore();
                         statusBoard.updateStatusBoard(word.getMaskedWord());
                         isPlayer1Turn = !isPlayer1Turn;
@@ -128,11 +127,15 @@ public class MultiplayerGame {
             else{
                 System.out.println(currentPlayer.getName() + " ran out of time!");
                 currentPlayer.increaseAttempt(maxAttempts);
+                if(currentPlayer.getCurrentAttempt() >= maxAttempts){
+                    System.out.println("Sorry! " + currentPlayer.getName() + ", you lose :(\n");
+                    //only next player should be able to guess
+                }
             }
 
             isPlayer1Turn = !isPlayer1Turn;
         }
-        System.out.println("Game Over! The word was: " + word.getWord());
+        System.out.println("Game Over! The word was: " + word.getWord().toUpperCase() + "\n");
         statusBoard.displayStatusBoard();
         executorService.shutdown();
     }
