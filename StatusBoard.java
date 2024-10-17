@@ -14,7 +14,7 @@ public class StatusBoard {
     }
 
     public void displayStatusBoard(){
-        String format = "%-20s %s %20s %-20s %s%n";
+        String format = "%-20s %s %30s %-20s %s%n";
         String lettersPlayer1 = "";
         String lettersPlayer2 = "";
         for(Character ch: player1.getIncorrectGuesses()){

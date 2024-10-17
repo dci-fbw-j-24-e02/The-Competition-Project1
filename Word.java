@@ -8,7 +8,7 @@ public class Word {
     private String guess;
 
     public Word(String word) {
-        this.word = word;
+        this.word = word.toLowerCase();
         this.guessedLetters = new HashSet<>();
         this.maskedWord = "_".repeat(word.length());
     }
